@@ -11,6 +11,12 @@ export const USER_DUMMY_DATA = [
     tokenId: "8888888888888",
     memberNo: 78532345,
   },
+  {
+    name: "Test",
+    email: "test@mail.com",
+    tokenId: "8521234213",
+    memberNo: 282131292,
+  },
 ];
 
 export const DUMMY_POST_DATA = [
