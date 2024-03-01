@@ -28,4 +28,8 @@ export const DUMMY_POST_DATA = [
     memberNo: 78532345,
     amount: 20000,
   },
+  {
+    memberNo: 282131292,
+    amount: 8000000,
+  },
 ];
