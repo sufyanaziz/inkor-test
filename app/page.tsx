@@ -1,4 +1,5 @@
 "use client";
+import Card from "@/common/components/Card";
 import useUserAccess from "@/common/hooks/useUserAccess";
 import Link from "next/link";
 
@@ -6,7 +7,7 @@ export default function Home() {
   const { isLogin, isClient } = useUserAccess();
   if (!isClient) return null;
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <Card>
       <ul>
         <li className="hover:underline">
           {isLogin ? (
@@ -16,6 +17,6 @@ export default function Home() {
           )}
         </li>
       </ul>
-    </main>
+    </Card>
   );
 }

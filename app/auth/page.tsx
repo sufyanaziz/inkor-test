@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "./hooks/useAuth";
 import { useRouter } from "next/navigation";
+import Card from "@/common/components/Card";
 
 const Page = () => {
   const router = useRouter();
@@ -19,22 +20,24 @@ const Page = () => {
 
   if (!isClient || isLogin) return null;
   return (
-    <main className="flex flex-col border border-solid p-4">
-      <input
-        type="text"
-        placeholder="Email"
-        className="border border-solid px-3 py-1 mb-4"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <button
-        type="submit"
-        onClick={() => onLogin(email)}
-        className="bg-slate-500 p-2 text-white rounded"
-      >
-        submit
-      </button>
-    </main>
+    <Card>
+      <div className="flex flex-col">
+        <input
+          type="text"
+          placeholder="Email"
+          className="border border-solid px-3 py-1 mb-4"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <button
+          type="submit"
+          onClick={() => onLogin(email)}
+          className="bg-slate-500 p-2 text-white rounded"
+        >
+          submit
+        </button>
+      </div>
+    </Card>
   );
 };
 
