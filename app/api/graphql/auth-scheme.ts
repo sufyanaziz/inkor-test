@@ -3,8 +3,12 @@ import { GraphQLError } from "graphql";
 import { USER_DUMMY_DATA } from "./data";
 
 export const authTypeDefs = gql`
+  type Auth {
+    user: User
+    expired: Float
+  }
   type Mutation {
-    login(email: String!): User
+    login(email: String!): Auth
   }
 `;
 
@@ -14,9 +18,11 @@ export const authResolvers = {
       const findEmailIdx = USER_DUMMY_DATA.findIndex((e) => e.email === email);
       if (findEmailIdx > -1) {
         const date = new Date();
-        date.setTime(new Date().getTime() + 60);
+        date.setTime(new Date().getTime() + 60 * 1000);
         return {
-          ...USER_DUMMY_DATA[findEmailIdx],
+          user: {
+            ...USER_DUMMY_DATA[findEmailIdx],
+          },
           expired: date,
         };
       }
