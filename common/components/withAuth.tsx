@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
+import Loader from "./Loader";
 
 export default function withAuth(Component: React.FC) {
   return function WithAuth(props: any) {
@@ -14,8 +15,7 @@ export default function withAuth(Component: React.FC) {
       }
     }, []);
 
-    if (!cookie || !isClient) return null;
-
+    if (!cookie || !isClient) return <Loader />;
     return <Component {...props} />;
   };
 }
