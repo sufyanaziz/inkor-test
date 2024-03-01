@@ -9,7 +9,7 @@ const Page = () => {
   const [email, setEmail] = useState("");
   const [isClient, setIsClient] = useState(false);
 
-  const { isLogin, onLogin } = useAuth();
+  const { isLogin, onLogin, res } = useAuth();
 
   useEffect(() => {
     setIsClient(true);
@@ -31,10 +31,14 @@ const Page = () => {
         />
         <button
           type="submit"
-          onClick={() => onLogin(email)}
-          className="bg-slate-500 p-2 text-white rounded"
+          onClick={res.loading ? undefined : () => onLogin(email)}
+          className={`${
+            !res.loading
+              ? "bg-slate-500 text-white"
+              : "bg-slate-200 cursor-not-allowed"
+          } p-2 rounded`}
         >
-          submit
+          {res.loading ? "Loading..." : "Submit"}
         </button>
       </div>
     </Card>
