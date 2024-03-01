@@ -5,3 +5,7 @@
 .client-container {
   height: 100vh;
 }
+
+.card {
+  padding: 16px;
+}
